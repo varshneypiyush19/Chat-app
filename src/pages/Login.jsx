@@ -28,34 +28,36 @@ export default function Login() {
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (handleVaildation()) {
-      const { username, password } = values;
-      const { data } = await axios.post(loginRoute, {
-        username,
-        password,
-      });
-      if (data.status === false) {
-        toast.error(data.msg, toastOptions);
-      }
-      if (data.status === true) {
-        localStorage.setItem(
-          process.env.REACT_APP_LOCALHOST_KEY,
-          JSON.stringify(data.user)
-        );
-        navigate("/");
+      try {
+        const { username, password } = values;
+        const { data } = await axios.post(loginRoute, { username, password });
+        if (data.status === false) {
+          toast.error(data.msg, toastOptions);
+        } else {
+          localStorage.setItem(
+            process.env.REACT_APP_LOCALHOST_KEY,
+            JSON.stringify(data.user)
+          );
+          navigate("/");
+        }
+      } catch (error) {
+        toast.error("Something went wrong. Please try again.", toastOptions);
       }
     }
   };
 
   const handleVaildation = () => {
     const { username, password } = values;
-    if (password === "") {
-      toast.error("Email and Password is required.", toastOptions);
+    if (!username) {
+      toast.error("Username and Password is required.", toastOptions);
       return false;
-    } else if (username.length === "") {
-      toast.error("Email and Password is required.", toastOptions);
+    }
+    if (!password) {
+      toast.error("Username and Password is required.", toastOptions);
       return false;
     }
     return true;

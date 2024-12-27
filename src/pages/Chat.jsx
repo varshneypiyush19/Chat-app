@@ -16,20 +16,6 @@ function Chat() {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
 
-  // useEffect(() => {
-  //   async function fetchcurrentuser() {
-  //     if (!localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-  //       navigate("/login");
-  //     } else {
-  //       setCurrentUser(
-  //         await JSON.parse(
-  //           localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-  //         )
-  //       );
-  //     }
-  //   }
-  //   fetchcurrentuser();
-  // }, [navigate]);
   useEffect(() => {
     async function fetchcurrentuser() {
       const storedUser = localStorage.getItem(
@@ -39,7 +25,6 @@ function Chat() {
         navigate("/login");
       } else {
         const parsedUser = JSON.parse(storedUser);
-        console.log("Parsed User Data:", parsedUser);
         setCurrentUser(parsedUser);
       }
     }
