@@ -367,7 +367,7 @@ const Container = styled.div`
   background-color: #131324;
 
   .container {
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
     background-color: #00000076;
     display: grid;
