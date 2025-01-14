@@ -112,10 +112,9 @@ const Container = styled.div`
     border-radius: 2rem;
     display: flex;
     align-items: center;
-    gap: 2rem;
     background-color: #ffffff34;
     input {
-      width: 90%;
+      width: 100%;
       height: 60%;
       background-color: transparent;
       color: white;
@@ -130,15 +129,17 @@ const Container = styled.div`
       }
     }
     button {
-      padding: 0.3rem 2rem;
-      border-radius: 2rem;
+      padding: 0.3rem;
+      padding-left: 0.6rem;
+      padding-right: 0.2rem;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #9a86f3;
       border: none;
       @media screen and (min-width: 720px) and (max-width: 1080px) {
-        padding: 0.3rem 1rem;
+        /* padding: 0.3rem 1rem; */
         svg {
           font-size: 1rem;
         }
